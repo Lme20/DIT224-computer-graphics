@@ -1,0 +1,21 @@
+﻿  Building Custom Rule C:/Users/louis/StudioProjects/dit224-computer-graphics/pathtracer/CMakeLists.txt
+  main.cpp
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(29,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Settings' when no variable is declared
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(39,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Environment' when no variable is declared
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(53,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Image' when no variable is declared
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\main.cpp(556,70): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\main.cpp(566,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\main.cpp(569,43): warning C4305: 'argument': truncation from 'double' to 'float'
+  Pathtracer.cpp
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(29,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Settings' when no variable is declared
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(39,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Environment' when no variable is declared
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(53,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Image' when no variable is declared
+  sampling.cpp
+  HDRImage.cpp
+  embree.cpp
+  material.cpp
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(29,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Settings' when no variable is declared
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(39,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Environment' when no variable is declared
+C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h(53,2): warning C4091: 'extern ': ignored on left of 'pathtracer::Image' when no variable is declared
+  Generating Code...
+  pathtracer.vcxproj -> C:\Users\louis\StudioProjects\dit224-computer-graphics\bin\pathtracer.exe

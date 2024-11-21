@@ -1,0 +1,8 @@
+﻿  Building Custom Rule C:/Users/louis/StudioProjects/dit224-computer-graphics/project/CMakeLists.txt
+  main.cpp
+  fbo.cpp
+  heightfield.cpp
+  ParticleSystem.cpp
+  Generating Code...
+     Creating library C:/Users/louis/StudioProjects/dit224-computer-graphics/build/project/Debug/project.lib and object C:/Users/louis/StudioProjects/dit224-computer-graphics/build/project/Debug/project.exp
+  project.vcxproj -> C:\Users\louis\StudioProjects\dit224-computer-graphics\bin\project.exe

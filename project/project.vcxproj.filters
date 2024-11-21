@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\fbo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\heightfield.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ParticleSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\fbo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\heightfield.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ParticleSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\background.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\fullscreenQuad.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\heightfield.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\heightfield.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\irradianceMap.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\particle.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\particle.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\reflectivityMap.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\shading.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\shading.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\simple.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\simple.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ssaoInput.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ssaoInput.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ssaoOutput.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ssaoOutput.vert">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8AF6FEE7-E2C2-3CFC-B0D5-24AFB568C85C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{B44F338A-7AF4-3D13-8BEC-8278A3324422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B0EAE37-F766-37F0-ABE3-34E6020D82E8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

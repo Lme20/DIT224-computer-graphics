@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\labhelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\hdr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\imgui_impl_sdl_gl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\labhelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\hdr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\imgui_impl_sdl_gl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8AF6FEE7-E2C2-3CFC-B0D5-24AFB568C85C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B0EAE37-F766-37F0-ABE3-34E6020D82E8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

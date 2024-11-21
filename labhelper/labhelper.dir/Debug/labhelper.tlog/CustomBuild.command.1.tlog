@@ -1,0 +1,10 @@
+^C:\USERS\LOUIS\STUDIOPROJECTS\DIT224-COMPUTER-GRAPHICS\LABHELPER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/louis/StudioProjects/dit224-computer-graphics -BC:/Users/louis/StudioProjects/dit224-computer-graphics/build --check-stamp-file C:/Users/louis/StudioProjects/dit224-computer-graphics/build/labhelper/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

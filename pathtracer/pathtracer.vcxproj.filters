@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\sampling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\HDRImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\embree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\Pathtracer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\sampling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\HDRImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\embree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\copyTexture.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\copyTexture.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\simple.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\pathtracer\simple.vert">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8AF6FEE7-E2C2-3CFC-B0D5-24AFB568C85C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{B44F338A-7AF4-3D13-8BEC-8278A3324422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B0EAE37-F766-37F0-ABE3-34E6020D82E8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

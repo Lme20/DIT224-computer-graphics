@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DB62ADAC-26E8-3C07-9FEE-A1AB920C9D85}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>project</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">project.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">project</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">project.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">project</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">project.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">project</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLM_ENABLE_EXPERIMENTAL;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLM_ENABLE_EXPERIMENTAL;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\labhelper\Debug\labhelper.lib;..\labhelper\imgui\Debug\imgui.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\lib\SDL2.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\lib\SDL2main.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\lib\glew32.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/louis/StudioProjects/dit224-computer-graphics/build/project/Debug/project.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/louis/StudioProjects/dit224-computer-graphics/bin/project.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLM_ENABLE_EXPERIMENTAL;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLM_ENABLE_EXPERIMENTAL;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\labhelper\Release\labhelper.lib;..\labhelper\imgui\Release\imgui.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\lib\SDL2.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\lib\SDL2main.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\lib\glew32.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/louis/StudioProjects/dit224-computer-graphics/build/project/Release/project.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/louis/StudioProjects/dit224-computer-graphics/bin/project.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLM_ENABLE_EXPERIMENTAL;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLM_ENABLE_EXPERIMENTAL;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\louis\StudioProjects\dit224-computer-graphics\labhelper;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\stb-master;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\tinyobjloader-1.0.6;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glm\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\include;C:\Users\louis\StudioProjects\dit224-computer-graphics\external_src\imgui-1.51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\labhelper\RelWithDebInfo\labhelper.lib;..\labhelper\imgui\RelWithDebInfo\imgui.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\lib\SDL2.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\sdl2\lib\SDL2main.lib;C:\Users\louis\StudioProjects\dit224-computer-graphics\external\glew\lib\glew32.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/louis/StudioProjects/dit224-computer-graphics/build/project/RelWithDebInfo/project.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/louis/StudioProjects/dit224-computer-graphics/bin/project.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/louis/StudioProjects/dit224-computer-graphics/project/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/louis/StudioProjects/dit224-computer-graphics -BC:/Users/louis/StudioProjects/dit224-computer-graphics/build --check-stamp-file C:/Users/louis/StudioProjects/dit224-computer-graphics/build/project/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\VSUserTemplate.user;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\build\project\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/louis/StudioProjects/dit224-computer-graphics/project/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/louis/StudioProjects/dit224-computer-graphics -BC:/Users/louis/StudioProjects/dit224-computer-graphics/build --check-stamp-file C:/Users/louis/StudioProjects/dit224-computer-graphics/build/project/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\VSUserTemplate.user;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\build\project\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/louis/StudioProjects/dit224-computer-graphics/project/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/louis/StudioProjects/dit224-computer-graphics -BC:/Users/louis/StudioProjects/dit224-computer-graphics/build --check-stamp-file C:/Users/louis/StudioProjects/dit224-computer-graphics/build/project/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\VSUserTemplate.user;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\louis\StudioProjects\dit224-computer-graphics\build\project\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\main.cpp" />
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\fbo.cpp" />
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\fbo.h" />
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\heightfield.cpp" />
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\heightfield.h" />
+    <ClCompile Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ParticleSystem.cpp" />
+    <ClInclude Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ParticleSystem.h" />
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\background.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\fullscreenQuad.vert">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\heightfield.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\heightfield.vert">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\irradianceMap.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\particle.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\particle.vert">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\reflectivityMap.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\shading.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\shading.vert">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\simple.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\simple.vert">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ssaoInput.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ssaoInput.vert">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ssaoOutput.frag">
+    </None>
+    <None Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\project\ssaoOutput.vert">
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\build\ZERO_CHECK.vcxproj">
+      <Project>{12EBE600-C63F-3860-A342-5F9DC3CD0496}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\build\labhelper\imgui\imgui.vcxproj">
+      <Project>{7B69A953-A4DC-3426-B7F3-BF25ABAAD336}</Project>
+      <Name>imgui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\louis\StudioProjects\dit224-computer-graphics\build\labhelper\labhelper.vcxproj">
+      <Project>{52147735-A472-3B5B-834A-38424C8443FA}</Project>
+      <Name>labhelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

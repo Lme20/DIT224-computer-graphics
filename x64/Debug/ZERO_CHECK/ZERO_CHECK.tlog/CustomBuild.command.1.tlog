@@ -1,0 +1,10 @@
+^C:\USERS\LOUIS\STUDIOPROJECTS\DIT224-COMPUTER-GRAPHICS\BUILD\CMAKEFILES\CE194181BB55EF42926575E715CDBE2A\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/louis/StudioProjects/dit224-computer-graphics -BC:/Users/louis/StudioProjects/dit224-computer-graphics/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/louis/StudioProjects/dit224-computer-graphics/build/computer-graphics-labs.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
