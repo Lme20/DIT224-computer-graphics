@@ -413,7 +413,7 @@ void display()
 		glBindTexture(GL_TEXTURE_2D, cameraFB.colorTextureTarget); // Input from post-process FBO
 		labhelper::setUniformSlow(horizontalBlurShader, "inputTexture", 0);
 
-		labhelper::drawFullScreenQuad();
+		labhelper::drawFullScreenQuad();   
 
 		// Vertical blur pass
 		glBindFramebuffer(GL_FRAMEBUFFER, verticalBlurFbo.framebufferId);
