@@ -4,6 +4,8 @@
 extern "C" _declspec(dllexport) unsigned int NvOptimusEnablement = 0x00000001;
 #endif
 
+#include <iostream>
+
 #include <GL/glew.h>
 #include <cmath>
 #include <cstdlib>
@@ -23,6 +25,7 @@ using namespace glm;
 #include "fbo.h"
 
 
+#include "heightfield.h"
 
 
 using std::min;
@@ -42,12 +45,19 @@ int windowWidth, windowHeight;
 ivec2 g_prevMouseCoords = { -1, -1 };
 bool g_isMouseDragging = false;
 
+HeightField terrain; // Heightfield object
+
+labhelper::Model* treeModel = nullptr;  // declare tree model globally
+std::vector<glm::vec3> treePositions;   // store tree positions
+
 ///////////////////////////////////////////////////////////////////////////////
 // Shader programs
 ///////////////////////////////////////////////////////////////////////////////
 GLuint shaderProgram;       // Shader for rendering the final image
 GLuint simpleShaderProgram; // Shader used to draw the shadow map
 GLuint backgroundProgram;
+GLuint terrainShaderProgram; // Shader used to draw the terrain
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Environment
@@ -111,6 +121,17 @@ void loadShaders(bool is_reload)
 	{
 		shaderProgram = shader;
 	}
+
+	// Load terrain shader
+	shader = labhelper::loadShaderProgram("../project/heightfield.vert", "../project/shading.frag", is_reload);
+	if (shader != 0)
+	{
+		terrainShaderProgram = shader;
+	}
+	else
+	{
+		std::cerr << "Failed to load terrain shader." << std::endl;
+	}
 }
 
 
@@ -136,6 +157,9 @@ void initialize()
 	roomModelMatrix = mat4(1.0f);
 	fighterModelMatrix = translate(15.0f * worldUp);
 	landingPadModelMatrix = mat4(1.0f);
+	 
+	treeModel = labhelper::loadModelFromOBJ("../scenes/palm-tree.obj"); // Load tree model
+
 
 	///////////////////////////////////////////////////////////////////////
 	// Load environment map
@@ -149,13 +173,20 @@ void initialize()
 	irradianceMap = labhelper::loadHdrTexture("../scenes/envmaps/" + envmap_base_name + "_irradiance.hdr");
 	reflectionMap = labhelper::loadHdrMipmapTexture(filenames);
 
+	///////////////////////////////////////////////////////////////////////
+	// Generate the height field terrain
+	// Using an indexed array of triangles
+	///////////////////////////////////////////////////////////////////////
+	terrain.generateMesh(1024); // tbd - Use an appropriate tesselation value, e.g., 512
+	terrain.loadHeightField("../scenes/nlsFinland/L3123F.png"); // Path to your height map
+	terrain.loadDiffuseTexture("../scenes/nlsFinland/L3123F_downscaled.jpg"); // Optional diffuse texture
 
 
 	glEnable(GL_DEPTH_TEST); // enable Z-buffering
 	glEnable(GL_CULL_FACE);  // enables backface culling
 
-
-
+	// glEnable(GL_PRIMITIVE_RESTART);
+	// glPrimitiveRestartIndex(UINT32_MAX);
 }
 
 void debugDrawLight(const glm::mat4& viewMatrix,
@@ -283,7 +314,56 @@ void display(void)
 	drawScene(shaderProgram, viewMatrix, projMatrix, lightViewMatrix, lightProjMatrix);
 	debugDrawLight(viewMatrix, projMatrix, vec3(lightPosition));
 
+	///////////////////////////////////////////////////////////////////////////
+	// Render the height field
+	///////////////////////////////////////////////////////////////////////////
+	glUseProgram(terrainShaderProgram); // Use terrain shader for rendering
 
+	// Set terrain uniforms
+	mat4 terrainModelMatrix = scale(mat4(1.0f), vec3(100.0f, 1.0f, 100.0f)); // Scale terrain in x and z directions
+	mat4 terrainModelViewProjectionMatrix = projMatrix * viewMatrix * terrainModelMatrix; // compute model view projection matrix
+
+	labhelper::setUniformSlow(terrainShaderProgram, "modelViewProjectionMatrix", terrainModelViewProjectionMatrix); // pass MVP matrix to shader
+	labhelper::setUniformSlow(terrainShaderProgram, "modelViewMatrix", viewMatrix * terrainModelMatrix); // pass MV matrix for position transformation
+	labhelper::setUniformSlow(terrainShaderProgram, "normalMatrix", inverse(transpose(viewMatrix * terrainModelMatrix))); // pass normal matrix for lighting calculations
+	labhelper::setUniformSlow(terrainShaderProgram, "heightMap", 0); // Bind height map to texture unit 0 - relevant to heightfield.vert
+	labhelper::setUniformSlow(terrainShaderProgram, "heightScale", 10.0f); //set scale for height (y-axis) displacement - relevant to heightfield.vert
+
+	// Light uniforms
+	labhelper::setUniformSlow(terrainShaderProgram, "viewSpaceLightPosition", vec3(viewMatrix * vec4(lightPosition, 1.0))); // pass light position transformed in view space
+	labhelper::setUniformSlow(terrainShaderProgram, "point_light_color", point_light_color); // pass light color
+	labhelper::setUniformSlow(terrainShaderProgram, "point_light_intensity_multiplier", point_light_intensity_multiplier); // pass light intensity multiplier
+
+	// labhelper::setUniformSlow(terrainShaderProgram, "diffuseMap", 1);  // Diffuse texture unit
+	// labhelper::setUniformSlow(terrainShaderProgram, "scaleFactor", 100.0f); // modifies size in x and z directions.
+
+	// Diffuse texture
+	labhelper::setUniformSlow(terrainShaderProgram, "has_color_texture", 1); // Set to 1 if diffuse texture is used
+	labhelper::setUniformSlow(terrainShaderProgram, "colorMap", 1); // Bind diffuse texture to texture unit 1 - shading.frag
+
+	// Environment maps
+	labhelper::setUniformSlow(terrainShaderProgram, "environment_multiplier", environment_multiplier);
+
+	//TODO: Check if this is needed - Bind height map texture
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, terrain.m_texid_hf); // Bind height map
+
+	// Bind diffuse texture
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, terrain.m_texid_diffuse); // Bind diffuse areal photo - texture
+
+	glActiveTexture(GL_TEXTURE6);
+	glBindTexture(GL_TEXTURE_2D, environmentMap); // Environment map
+
+	// Set polygon mode to wireframe
+	// glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+
+	// Submit the terrain mesh
+	terrain.submitTriangles();
+
+	// Set polygon mode back to fill
+	// glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 }
 
@@ -404,6 +484,11 @@ void gui()
 
 int main(int argc, char* argv[])
 {
+	// TODO: Add option to scale up or down the terrain
+	// TODO: Add option to move the light
+	// TODO: Add water?
+	// TODO: disable default scene objects
+
 	g_window = labhelper::init_window_SDL("OpenGL Project");
 
 	initialize();

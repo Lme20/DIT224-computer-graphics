@@ -83,16 +83,74 @@ void HeightField::loadDiffuseTexture(const std::string& diffusePath)
 
 void HeightField::generateMesh(int tesselation)
 {
-	// generate a mesh in range -1 to 1 in x and z
+	// Step 1: generate a mesh in range -1 to 1 in x and z
 	// (y is 0 but will be altered in height field vertex shader)
+	std::vector<glm::vec3> positions;
+	std::vector<glm::vec2> uvs;
+	std::vector<GLuint> indices;
+
+	float step = 2.0f / tesselation; // Step size to cover [-1, 1]
+
+	for (int z = 0; z <= tesselation; ++z) {
+		for (int x = 0; x <= tesselation; ++x) {
+			// Position: Range [-1, 1] for x and z
+			float px = -1.0f + x * step;
+			float pz = -1.0f + z * step;
+			positions.emplace_back(glm::vec3(px, 0.0f, pz));
+
+			// Texture coordinates: Range [0, 1] for u and v
+			float u = float(x) / tesselation;
+			float v = float(z) / tesselation;
+			uvs.emplace_back(glm::vec2(u, v));
+
+			// Indices for triangle mesh
+			if (x < tesselation && z < tesselation) {
+				GLuint topLeft = z * (tesselation + 1) + x;
+				GLuint topRight = topLeft + 1;
+				GLuint bottomLeft = topLeft + (tesselation + 1);
+				GLuint bottomRight = bottomLeft + 1;
+
+				indices.insert(indices.end(), { topLeft, bottomLeft, topRight, topRight, bottomLeft, bottomRight });
+			}
+		}
+	}
+
+	// Step 2: Send data to OpenGL buffers
+	glGenVertexArrays(1, &m_vao);
+	glBindVertexArray(m_vao);
+
+	// Positions
+	glGenBuffers(1, &m_positionBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, m_positionBuffer);
+	glBufferData(GL_ARRAY_BUFFER, positions.size() * sizeof(glm::vec3), positions.data(), GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+	glEnableVertexAttribArray(0);
+
+	// Texture coordinates
+	glGenBuffers(1, &m_uvBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, m_uvBuffer);
+	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), uvs.data(), GL_STATIC_DRAW);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+	glEnableVertexAttribArray(2);
+
+	// Indices
+	glGenBuffers(1, &m_indexBuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), indices.data(), GL_STATIC_DRAW);
+
+	m_numIndices = indices.size();
+
+	// Unbind VAO
+	glBindVertexArray(0);
+
 }
 
 void HeightField::submitTriangles(void)
 {
-	if(m_vao == UINT32_MAX)
-	{
-		std::cout << "No vertex array is generated, cannot draw anything.\n";
-		return;
-	}
 
+	// Step 3: Bind VAO and draw
+	glBindVertexArray(m_vao);
+	glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_INT, 0);
+
+	glBindVertexArray(0);
 }
