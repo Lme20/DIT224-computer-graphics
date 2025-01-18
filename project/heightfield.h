@@ -28,4 +28,7 @@ public:
 
 	/// Render height map
 	void submitTriangles(void);
+
+	/// Get height at a given point
+	float sampleHeightAt(float u, float v) const;
 };

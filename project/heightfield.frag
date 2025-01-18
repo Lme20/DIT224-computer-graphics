@@ -17,6 +17,6 @@ void main()
     // Sample color from the diffuse map (fallback to heightmap for debugging)
     vec3 color = texture(diffuseMap, texCoord).rgb;
 
-	//fragmentColor = vec4(texCoord.xy, 0.0, 1.0);
-	fragmentColor = vec4(1, 1, 1, 1);
+	fragmentColor = vec4(texCoord.xy, 0.0, 1.0);
+	//fragmentColor = vec4(1, 1, 1, 1);
 }

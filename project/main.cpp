@@ -50,6 +50,8 @@ HeightField terrain; // Heightfield object
 labhelper::Model* treeModel = nullptr;  // declare tree model globally
 std::vector<glm::vec3> treePositions;   // store tree positions
 
+bool useWireframe = false; // toggle wireframe mode
+
 ///////////////////////////////////////////////////////////////////////////////
 // Shader programs
 ///////////////////////////////////////////////////////////////////////////////
@@ -73,8 +75,6 @@ vec3 lightPosition;
 vec3 point_light_color = vec3(1.f, 1.f, 1.f);
 
 float point_light_intensity_multiplier = 10000.0f;
-
-
 
 
 
@@ -134,7 +134,70 @@ void loadShaders(bool is_reload)
 	}
 }
 
+// Function to generate tree positions randomly at a specific height range
+void generateTreePositions()
+{
+	const int maxTrees = 500;  // max number of trees
+	const int numTreeAttempts = 1000;  // number of random placement attempts
+	const float minHeight = 0.1f;  // Minimum height for tree placement
+	const float maxHeight = 1.0f;  // Maximum height for tree placement
 
+	// Fetch the terrain scaling from terrainModelMatrix
+	const float terrainScaleX = 100.0f; // Matches terrainModelMatrix scaling
+	const float terrainScaleZ = 100.0f;
+
+	int generatedTreeCount = 0;
+
+	// Log terrain bounds for debugging
+	std::cout << "Terrain bounds: X = [-" << terrainScaleX / 2 << ", " << terrainScaleX / 2
+		<< "], Z = [-" << terrainScaleZ / 2 << ", " << terrainScaleZ / 2 << "]" << std::endl;
+
+	// Grid-based sampling to ensure coverage
+	const int gridResolution = 50; 
+	const float gridStep = 1.0f / gridResolution;
+
+	for (int gx = 0; gx < gridResolution; ++gx)
+	{
+		for (int gz = 0; gz < gridResolution; ++gz)
+		{
+			// Uniform grid sampling
+			float u = gx * gridStep;
+			float v = gz * gridStep;
+
+			// add randomness within each grid cell
+			u += (static_cast<float>(rand()) / RAND_MAX) * gridStep * 0.5f;
+			v += (static_cast<float>(rand()) / RAND_MAX) * gridStep * 0.5f;
+
+			// we sample height at (u, v)
+			float height = terrain.sampleHeightAt(u, v);
+			std::cout << "Sampled height at (" << u << ", " << v << "): " << height << '\n'; // DEBUG
+
+			// skip if height is out of range
+			if (height < minHeight || height > maxHeight)
+			{
+				continue;
+			}
+
+			// Map u, v to world space coordinates
+			float worldX = (u - 0.5f) * terrainScaleX;  // Match terrain scaling
+			float worldZ = (v - 0.5f) * terrainScaleZ;
+			float worldY = height;  // Use sampled height directly
+
+			// Add the tree position to the list where valid
+			treePositions.emplace_back(glm::vec3(worldX, worldY, worldZ));
+			++generatedTreeCount;
+
+			// Stop if we reach the maximum number of trees
+			if (generatedTreeCount >= maxTrees)
+			{
+				std::cout << "Reached maximum tree limit: " << maxTrees << std::endl;
+				return;
+			}
+		}
+	}
+
+	std::cout << "Generated " << treePositions.size() << " trees." << std::endl;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 /// This function is called once at the start of the program and never again
@@ -158,7 +221,7 @@ void initialize()
 	fighterModelMatrix = translate(15.0f * worldUp);
 	landingPadModelMatrix = mat4(1.0f);
 	 
-	treeModel = labhelper::loadModelFromOBJ("../scenes/palm-tree.obj"); // Load tree model
+	treeModel = labhelper::loadModelFromOBJ("../scenes/tree.obj"); // Load tree model
 
 
 	///////////////////////////////////////////////////////////////////////
@@ -175,9 +238,9 @@ void initialize()
 
 	///////////////////////////////////////////////////////////////////////
 	// Generate the height field terrain
-	// Using an indexed array of triangles
+	// using an indexed array of triangles
 	///////////////////////////////////////////////////////////////////////
-	terrain.generateMesh(1024); // tbd - Use an appropriate tesselation value, e.g., 512
+	terrain.generateMesh(512); // tesselation value
 	terrain.loadHeightField("../scenes/nlsFinland/L3123F.png"); // Path to your height map
 	terrain.loadDiffuseTexture("../scenes/nlsFinland/L3123F_downscaled.jpg"); // Optional diffuse texture
 
@@ -187,6 +250,13 @@ void initialize()
 
 	// glEnable(GL_PRIMITIVE_RESTART);
 	// glPrimitiveRestartIndex(UINT32_MAX);
+	
+	///////////////////////////////////////////////////////////////////////
+	// Generate tree positions
+	///////////////////////////////////////////////////////////////////////
+
+	generateTreePositions();
+
 }
 
 void debugDrawLight(const glm::mat4& viewMatrix,
@@ -222,6 +292,7 @@ void drawScene(GLuint currentShaderProgram,
                const mat4& lightProjectionMatrix)
 {
 	glUseProgram(currentShaderProgram);
+
 	// Light source
 	vec4 viewSpaceLightPosition = viewMatrix * vec4(lightPosition, 1.0f);
 	labhelper::setUniformSlow(currentShaderProgram, "point_light_color", point_light_color);
@@ -238,6 +309,7 @@ void drawScene(GLuint currentShaderProgram,
 	// camera
 	labhelper::setUniformSlow(currentShaderProgram, "viewInverse", inverse(viewMatrix));
 
+	/*
 	// landing pad
 	labhelper::setUniformSlow(currentShaderProgram, "modelViewProjectionMatrix",
 	                          projectionMatrix * viewMatrix * landingPadModelMatrix);
@@ -255,6 +327,43 @@ void drawScene(GLuint currentShaderProgram,
 	                          inverse(transpose(viewMatrix * fighterModelMatrix)));
 
 	labhelper::render(fighterModel);
+	*/
+}
+
+///////////////////////////////////////////////////////////////////////////
+// Function to render trees
+///////////////////////////////////////////////////////////////////////////
+void renderTrees(const glm::mat4& projMatrix, const glm::mat4& viewMatrix)
+{
+	glUseProgram(shaderProgram); // default scene shader for trees
+
+	//lighting uniforms
+	vec4 viewSpaceLightPosition = viewMatrix * vec4(lightPosition, 1.0f);
+	labhelper::setUniformSlow(shaderProgram, "viewSpaceLightPosition", vec3(viewSpaceLightPosition));
+	labhelper::setUniformSlow(shaderProgram, "point_light_color", point_light_color);
+	labhelper::setUniformSlow(shaderProgram, "point_light_intensity_multiplier", point_light_intensity_multiplier);
+
+	// environment map uniforms
+	labhelper::setUniformSlow(shaderProgram, "environment_multiplier", environment_multiplier);
+	labhelper::setUniformSlow(shaderProgram, "viewInverse", inverse(viewMatrix));
+
+	// Loop over all tree positions to render them
+	const float treeScale = 0.2f; // TREE SIZE: Scale factor for the trees
+	for (const glm::vec3& position : treePositions)
+	{
+		// Computed model matrix for each tree
+		glm::mat4 modelMatrix =
+			glm::translate(position) * glm::scale(glm::vec3(treeScale)); // apply the scaling
+		glm::mat4 mvpMatrix = projMatrix * viewMatrix * modelMatrix;
+
+		// model uniforms
+		labhelper::setUniformSlow(shaderProgram, "modelViewProjectionMatrix", mvpMatrix);
+		labhelper::setUniformSlow(shaderProgram, "modelViewMatrix", viewMatrix * modelMatrix);
+		labhelper::setUniformSlow(shaderProgram, "normalMatrix", inverse(transpose(viewMatrix * modelMatrix)));
+
+		// render the tree
+		labhelper::render(treeModel);
+	}
 }
 
 
@@ -300,8 +409,6 @@ void display(void)
 	glBindTexture(GL_TEXTURE_2D, reflectionMap);
 	glActiveTexture(GL_TEXTURE0);
 
-
-
 	///////////////////////////////////////////////////////////////////////////
 	// Draw from camera
 	///////////////////////////////////////////////////////////////////////////
@@ -317,12 +424,24 @@ void display(void)
 	///////////////////////////////////////////////////////////////////////////
 	// Render the height field
 	///////////////////////////////////////////////////////////////////////////
+	
+	// Apply polygon mode based on GUI toggle
+	// conditionally enable wireframe mode
+	if (useWireframe)
+	{
+
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // enable wireframe mode
+		glEnable(GL_DEPTH_TEST);                 // disable depth test for wireframe
+		// glDisable(GL_BLEND);                      // blending off
+	}
+
 	glUseProgram(terrainShaderProgram); // Use terrain shader for rendering
 
-	// Set terrain uniforms
+	// terrain uniforms
 	mat4 terrainModelMatrix = scale(mat4(1.0f), vec3(100.0f, 1.0f, 100.0f)); // Scale terrain in x and z directions
 	mat4 terrainModelViewProjectionMatrix = projMatrix * viewMatrix * terrainModelMatrix; // compute model view projection matrix
 
+	// transform matrices
 	labhelper::setUniformSlow(terrainShaderProgram, "modelViewProjectionMatrix", terrainModelViewProjectionMatrix); // pass MVP matrix to shader
 	labhelper::setUniformSlow(terrainShaderProgram, "modelViewMatrix", viewMatrix * terrainModelMatrix); // pass MV matrix for position transformation
 	labhelper::setUniformSlow(terrainShaderProgram, "normalMatrix", inverse(transpose(viewMatrix * terrainModelMatrix))); // pass normal matrix for lighting calculations
@@ -344,7 +463,7 @@ void display(void)
 	// Environment maps
 	labhelper::setUniformSlow(terrainShaderProgram, "environment_multiplier", environment_multiplier);
 
-	//TODO: Check if this is needed - Bind height map texture
+	//Bind height map texture
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, terrain.m_texid_hf); // Bind height map
 
@@ -355,15 +474,21 @@ void display(void)
 	glActiveTexture(GL_TEXTURE6);
 	glBindTexture(GL_TEXTURE_2D, environmentMap); // Environment map
 
-	// Set polygon mode to wireframe
-	// glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
 
 	// Submit the terrain mesh
 	terrain.submitTriangles();
 
-	// Set polygon mode back to fill
-	// glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	// Apply polygon mode based on GUI toggle
+	// disable wireframe after rendering the terrain
+	if (useWireframe)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); // reset to fill mode
+		// glEnable(GL_DEPTH_TEST);                  // re-enable depth test
+		// glEnable(GL_BLEND);                       // Re-enable blending
+	}
+
+	// render trees
+	renderTrees(projMatrix, viewMatrix);
 
 }
 
@@ -476,9 +601,29 @@ bool handleEvents(void)
 ///////////////////////////////////////////////////////////////////////////////
 void gui()
 {
+	// Terrain properties for GUI
+	const vec3 terrainScale(100.0f, 1.0f, 100.0f); // match terrainModelMatrix scaling
+	const int terrainTessellation = 512; // match  tessellation value used in `generateMesh`
+	const float terrainWidth = terrainScale.x * 2.0f; // Width in world units
+	const float terrainDepth = terrainScale.z * 2.0f; // depth in world units
+
 	// ----------------- Set variables --------------------------
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
 	            ImGui::GetIO().Framerate);
+	// tree count
+	ImGui::Text("Number of trees: %d", static_cast<int>(treePositions.size()));
+
+	// Terrain details
+	ImGui::Separator(); // Adds a horizontal line
+	ImGui::Text("Terrain properties:");
+	ImGui::Text("Scale: X=%.1f, Y=%.1f, Z=%.1f", terrainScale.x, terrainScale.y, terrainScale.z);
+	ImGui::Text("Width: %.1f units", terrainWidth);
+	ImGui::Text("Depth: %.1f units", terrainDepth);
+	ImGui::Text("Tessellation: %d (triangles per side)", terrainTessellation);
+
+	// toggle wireframe mode
+	ImGui::Separator();
+	ImGui::Checkbox("Wireframe Mode", &useWireframe);
 	// ----------------------------------------------------------
 }
 
@@ -528,6 +673,7 @@ int main(int argc, char* argv[])
 	// Free Models
 	labhelper::freeModel(fighterModel);
 	labhelper::freeModel(landingpadModel);
+	labhelper::freeModel(treeModel);
 
 	// Shut down everything. This includes the window and all other subsystems.
 	labhelper::shutDown(g_window);
